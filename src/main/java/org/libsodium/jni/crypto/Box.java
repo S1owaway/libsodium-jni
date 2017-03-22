@@ -56,6 +56,7 @@ public class Box {
 
     public byte[] encrypt(byte[] nonce, byte[] message) {
         checkLength(nonce, NONCE_BYTES);
+        
         byte[] msg = prependZeros(ZERO_BYTES, message);
         byte[] ct = new byte[msg.length];
         isValid(sodium().crypto_box_curve25519xsalsa20poly1305(ct, msg,
