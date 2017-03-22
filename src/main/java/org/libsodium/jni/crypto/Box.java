@@ -69,6 +69,7 @@ public class Box {
 
     public byte[] decrypt(byte[] nonce, byte[] ciphertext) {
         checkLength(nonce, NONCE_BYTES);
+        
         byte[] ct = prependZeros(BOXZERO_BYTES, ciphertext);
         byte[] message = new byte[ct.length];
         isValid(sodium().crypto_box_curve25519xsalsa20poly1305_open(message, ct,
